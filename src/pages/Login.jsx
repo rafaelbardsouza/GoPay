@@ -1,5 +1,5 @@
 import '../styles/Login.css';
-import logo from '../../public/goPay.png';
+import logo from '/goPay.png';
 import { useState } from 'react';
 
 export default function Login() {
