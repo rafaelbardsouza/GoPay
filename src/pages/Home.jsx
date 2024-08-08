@@ -1,8 +1,8 @@
-import '../styles/Home.css';
+import '../styles/Login.css';
 import logo from '../../public/goPay.png';
 import { useState } from 'react';
 
-export default function Home() {
+export default function Login() {
 
     const [state, setState] = useState({
         username: '',
