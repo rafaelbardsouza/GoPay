@@ -2,11 +2,20 @@ package main
 
 import (
 	"fmt"
+	"mymodule/goclient/database"
 	"net/http"
 )
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hello World")
+	db, err := database.Connect("root:@tcp(localhost:3306)/gopay")
+	if err != nil {
+		http.Error(w, fmt.Sprintf("Database connection failed: %v", err), http.StatusInternalServerError)
+		return
+	}
+
+	defer db.Close()
+
+	fmt.Fprintf(w, "Database connected successfully")
 }
 
 func main() {
