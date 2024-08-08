@@ -1,6 +1,8 @@
 import '../styles/Login.css';
 import logo from '/goPay.png';
+import { getRequest, postRequest } from '../httpClient'
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 
 export default function Login() {
 
@@ -15,6 +17,16 @@ export default function Login() {
             ...prevState,
             [name]: value
         }))
+    }    
+
+    const handleLogin = (func) => {
+        if(state.username==''||state.password=='') {
+            toast.error('Preencha todos os campos')
+        } else {
+            getRequest('localhost:8080').then((r) => {
+                console.log(r)
+            })
+        }
     }
 
     return (
@@ -36,8 +48,8 @@ export default function Login() {
                         value={state.password}
                         onChange={onChange}
                     />
-                    <button onClick={() => {console.log(state)}}>Login</button>
-                    <button onClick={() => {console.log(state)}}>Signin</button>
+                    <button onClick={() => {handleLogin('login')}}>Login</button>
+                    <button onClick={() => {handleLogin('signin')}}>Signin</button>
                 </div>
             </div>
         </div>

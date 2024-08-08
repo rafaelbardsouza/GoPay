@@ -1,9 +1,13 @@
+import { Toaster } from "react-hot-toast";
 import AppRoutes from "./components/Router/Index";
 
 function App() {
 
   return (
-    <AppRoutes/>
+    <>
+      <Toaster/>
+      <AppRoutes/>
+    </>
   );
 }
 
